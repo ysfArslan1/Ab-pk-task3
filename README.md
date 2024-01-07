@@ -9,7 +9,7 @@ Akbank ve patikadev tarafından gerçekleştirilen Asp.Net eğitimi sürecinde v
 Fluent Validation kütüphanesini kullanarak Update, Delete ve GetById metotları için validation sınıflarını yazınız. Controller içerisinde metot çağrımlarından önce validasyonları çalıştırınız.
 
 ## Validation sınıflarının oluşturulması ve Controllerda kullanılması:
-İstenilen istekler doğrultusunda GetStudentDetailQueryValidator, CreateStudentCommandValidator, UpdateStudentCommandValidator, DeleteStudentCommandValidator sınıflarını oluşturdum ve StudentController içerisinde çağırdım.
+İstenilen istekler doğrultusunda GetStudentDetailQueryValidator, CreateStudentCommandValidator, UpdateStudentCommandValidator, DeleteStudentCommandValidator sınıflarını oluşturdum ve StudentController içerisinde kullandım.
 
 ![Servisler ve Dependency Injection](images/a1.jpeg)
 ![Servisler ve Dependency Injection](images/v1.jpeg)
