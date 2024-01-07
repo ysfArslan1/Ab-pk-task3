@@ -10,10 +10,13 @@ namespace Ab_pk_task3.Common
     {
         public MappingProfile() 
         {
+            // CreateStudentModel sınıfının verileri ile Student nesnesi oluşturur. 
             CreateMap<CreateStudentModel, Student>();
+            // Student sınıfının verileri ile StudentDetailViewModel nesnesi oluşturur. 
             CreateMap<Student, StudentDetailViewModel>()
                 .ForMember(dest => dest.Class, opt =>opt.MapFrom(src=>((ClassEnum)src.ClassId).ToString()))
                 .ForMember(dest => dest.BookGenre, opt => opt.MapFrom(src => ((BookGenreEnum)src.BookGenreId).ToString()));
+            // Student sınıfının verileri ile StudentViewModel nesnesi oluşturur. 
             CreateMap<Student, StudentViewModel>()
                 .ForMember(dest => dest.Class, opt => opt.MapFrom(src => ((ClassEnum)src.ClassId).ToString()))
                 .ForMember(dest => dest.BookGenre, opt => opt.MapFrom(src => ((BookGenreEnum)src.BookGenreId).ToString()));

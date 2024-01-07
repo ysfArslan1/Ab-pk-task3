@@ -18,22 +18,10 @@ public class GetStudentQuery
     }
     public List<StudentViewModel> Handle()
     {
+        //tüm ögrenci verileri databaseden alınır.
         var _list = _dbContext.Students.OrderBy(x => x.StudentId).ToList();
+        // mapping ile Student sınıfından StudentViewModel verisi oluşturulur
         List<StudentViewModel> result = _mapper.Map<List<StudentViewModel>>(_list) ;
-            //new List<StudentViewModel>();
-        //foreach (var item in _list)
-        //{
-        //    result.Add(new StudentViewModel()
-        //    {
-        //        Name = item.Name,
-        //        Surname = item.Surname,
-        //        Class = ((ClassEnum)item.ClassId).ToString(),
-        //        BookGenre = ((BookGenreEnum)item.BookGenreId).ToString(),
-        //        TestDate = item.TestDate.Date.ToString("dd/MM/yyyy"),
-        //    });
-        //}
-
-
         return result;
     }
 }

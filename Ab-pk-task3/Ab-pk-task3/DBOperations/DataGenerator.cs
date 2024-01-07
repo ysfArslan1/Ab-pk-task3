@@ -5,7 +5,7 @@ namespace Ab_pk_task3.DBOperations;
 
 public class DataGenerator
 {
-    //inmemory de data üretmek içinkullanılıyor // program.cs de çalıştırılıyor
+    //inmemory de Student sınıfı verilerini program çalıştığında üretmek için kullanılıyor
     public static void Initialize(IServiceProvider serviceProvider)
     {
         using (var content = new PatikaDbContext(serviceProvider.GetRequiredService<DbContextOptions<PatikaDbContext>>())) 

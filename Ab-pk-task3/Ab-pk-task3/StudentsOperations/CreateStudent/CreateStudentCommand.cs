@@ -21,25 +21,19 @@ namespace Ab_pk_task3.StudentsOperations.CreateStudent
 
         public void Handle()
         {
+            // Alınan bilgilerle aynı kayıtın database bulunma durumuna bakılır
             var student = _dbContext.Students.Where(x => x.Name == Model.Name && x.Surname == Model.Surname).SingleOrDefault();
-
             if (student is not null)
                 throw new InvalidOperationException("Ögrenci Zaten Mevcut");
-
-            student = _mapper.Map   <Student>(Model); 
-            // Auto mapper halletti
-            //new Student();
-            //student.Name = Model.Name;
-            //student.Surname = Model.Surname;
-            //student.BookGenreId = Model.BookGenreId;
-            //student.ClassId = Model.ClassId;
-            //student.TestDate = Model.TestDate;
-
+            // mapping ile CreateStudentModel sınıfından Student verisi oluşturulur
+            student = _mapper.Map<Student>(Model);
+            // database işlemleri yapılır.
             _dbContext.Students.Add(student);
             _dbContext.SaveChanges();
 
         }
     }
+    // Student sınıfı üretmek için gerekli verilerin alındıgı sınıf.
     public class CreateStudentModel
     {
         public string Name { get; set; }

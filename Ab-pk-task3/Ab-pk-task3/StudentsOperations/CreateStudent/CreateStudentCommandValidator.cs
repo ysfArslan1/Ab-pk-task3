@@ -9,6 +9,7 @@ using Ab_pk_task3.Models;
 
 namespace Ab_pk_task3.StudentsOperations.CreateStudent
 {
+    // CreateStudentCommant sınıfın için oluşturulan validation sınıfı.
     public class CreateStudentCommandValidator : AbstractValidator<CreateStudentModel>
     {
         public CreateStudentCommandValidator()

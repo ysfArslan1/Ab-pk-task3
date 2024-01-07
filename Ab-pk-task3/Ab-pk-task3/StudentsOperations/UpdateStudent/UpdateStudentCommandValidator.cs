@@ -5,6 +5,7 @@ using Ab_pk_task3.Models;
 
 namespace Ab_pk_task3.StudentsOperations.UpdateStudent
 {
+    // UpdateStudentCommand sınıfın için oluşturulan validation sınıfı.
     public class UpdateStudentCommandValidator:AbstractValidator<UpdateStudentCommand>
     {
         

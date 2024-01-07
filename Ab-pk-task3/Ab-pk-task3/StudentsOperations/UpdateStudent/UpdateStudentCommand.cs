@@ -16,8 +16,8 @@ namespace Ab_pk_task3.StudentsOperations.UpdateStudent
 
         public void Handle()
         {
+            // Alınan bilgilerle aynı kayıtın database bulunma durumuna bakılır.
             var student = _dbContext.Students.Where(x => x.StudentId == StudentID).SingleOrDefault();
-
             if (student is null)
                 throw new InvalidOperationException("Gücellenecek Ögrenci Bulunamadı");
 
@@ -26,12 +26,14 @@ namespace Ab_pk_task3.StudentsOperations.UpdateStudent
             student.BookGenreId = Model.BookGenreId != default ? Model.BookGenreId : student.BookGenreId;
             student.ClassId = Model.ClassId != default ? Model.ClassId : student.ClassId;
             student.TestDate = Model.TestDate != default ? Model.TestDate : student.TestDate;
- 
+
+            // database işlemleri yapılır.
             _dbContext.Students.Update(student);
             _dbContext.SaveChanges();
 
         }
     }
+    // Student sınıfı düzenlemek için gerekli verilerin alındıgı sınıf.
     public class UpdateStudentModel
     {
         public string Name { get; set; }

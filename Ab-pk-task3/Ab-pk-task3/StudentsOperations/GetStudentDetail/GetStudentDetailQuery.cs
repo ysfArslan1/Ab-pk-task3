@@ -19,22 +19,17 @@ namespace Ab_pk_task3.StudentsOperations.GetStudentDetail
         }
         public StudentDetailViewModel Handle()
         {
+            // ögrenci verisi databaseden alınır.
             var student = _dbContext.Students.Where(x => x.StudentId == StudentID).SingleOrDefault();
-           
             if (student is null)
                 throw new InvalidOperationException("Ögrenci Bulunamadı");
-
+            // mapping ile Student sınıfından StudentDetailViewModel verisi oluşturulur
             StudentDetailViewModel studentDetail = _mapper.Map<StudentDetailViewModel>(student);
-            // auto mapper kullanıldı
-            //studentDetail.Name = student.Name;
-            //studentDetail.Surname = student.Surname;
-            //studentDetail.Class = ((ClassEnum)student.ClassId).ToString();
-            //studentDetail.BookGenre = ((BookGenreEnum)student.BookGenreId).ToString();
-            //studentDetail.TestDate = student.TestDate.Date.ToString("dd/MM/yyyy");
             
             return studentDetail;
         }
     }
+    // Student sınıfı geri döndürmek için yazılan sınıf
     public class StudentDetailViewModel
     {
         public string Name { get; set; }

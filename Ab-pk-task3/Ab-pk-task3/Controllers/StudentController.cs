@@ -16,7 +16,7 @@ using FluentValidation;
 
 namespace Ab_pk_task3.Controllers
 {
-    // datagenerator.cs, bankdbcontext, bankaccount, program, strtup sınıfları degistirildi
+    
     [ApiController]
     [Route("[controller]s")]
     public class StudentController : ControllerBase
@@ -34,6 +34,7 @@ namespace Ab_pk_task3.Controllers
         [HttpGet]
         public IActionResult GetStudents()
         {
+            // Student verilerinin StudentViewModel alınması için kullanlan query sınıfı oluşturulur ve handle edilir
             GetStudentQuery query = new GetStudentQuery(_context, _mapper);
             var _list = query.Handle();
             return Ok(_list);
@@ -46,8 +47,10 @@ namespace Ab_pk_task3.Controllers
             StudentDetailViewModel result;
             try
             {
+                // GetStudentDetailQuery nesnesi oluşturulur
                 GetStudentDetailQuery query = new GetStudentDetailQuery(_context, _mapper);
                 query.StudentID = id;
+                // Validation işlemi yapılır.
                 GetStudentDetailQueryValidator validator = new GetStudentDetailQueryValidator();
                 validator.ValidateAndThrow(query);
                 result = query.Handle();
@@ -63,11 +66,13 @@ namespace Ab_pk_task3.Controllers
         [HttpPost]
         public IActionResult AddStudent([FromBody] CreateStudentModel newModel)
         {
-            CreateStudentCommand command = new CreateStudentCommand(_context, _mapper);
+            
             try
             {
+                // CreateStudentCommand nesnesi oluşturulur
+                CreateStudentCommand command = new CreateStudentCommand(_context, _mapper);
                 command.Model = newModel;
-
+                // validation yapılır.
                 CreateStudentCommandValidator _validator=new CreateStudentCommandValidator();
                 _validator.ValidateAndThrow(newModel);
                 command.Handle();
@@ -87,9 +92,11 @@ namespace Ab_pk_task3.Controllers
 
             try
             {
+                // CreateStudentCommand nesnesi oluşturulur
                 UpdateStudentCommand command = new UpdateStudentCommand(_context);
                 command.StudentID = id;
                 command.Model = updateStudent;
+                // validation yapılır.
                 UpdateStudentCommandValidator validator  = new UpdateStudentCommandValidator();
                 validator.ValidateAndThrow(command);
                 command.Handle();
@@ -107,8 +114,10 @@ namespace Ab_pk_task3.Controllers
         {
             try
             {
+                // CreateStudentCommand nesnesi oluşturulur
                 DeleteStudentCommand command = new DeleteStudentCommand(_context);
                 command.StudentID = id;
+                // validation yapılır.
                 DeleteStudentCommandValidator _validator = new DeleteStudentCommandValidator();
                 _validator.ValidateAndThrow(command);
                 command.Handle();

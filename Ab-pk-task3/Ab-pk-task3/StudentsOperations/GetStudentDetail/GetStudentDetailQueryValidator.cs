@@ -7,6 +7,7 @@ using Ab_pk_task3.DBOperations;
 
 namespace Ab_pk_task3.StudentsOperations.GetStudentDetail
 {
+    // GetStudentDetailQuery sınıfın için oluşturulan validation sınıfı.
     public class GetStudentDetailQueryValidator : AbstractValidator<GetStudentDetailQuery>
     {
 
